@@ -1,0 +1,46 @@
+version: '3.8'
+
+x-wordpress-conf:
+  &wordpress-conf
+  image: wordpress:5.4.2-php7.2-apache
+  environment:
+    WORDPRESS_DB_HOST: mysql
+    WORDPRESS_DB_NAME: wordpress
+    WORDPRESS_DB_USER: root
+    WORDPRESS_DB_PASSWORD: wordpress
+  volumes:
+    - ./www:/var/www/html
+  restart: always
+  depends_on:
+    - mysql
+
+services:
+    wordpress1:
+      <<: *wordpress-conf
+
+    wordpress2:
+      <<: *wordpress-conf
+
+    wordpress3:
+      <<: *wordpress-conf
+
+    mysql:
+      image: mysql:5.7
+      environment:
+        MYSQL_ROOT_PASSWORD: wordpress
+        MYSQL_DATABASE: wordpress
+      restart: always
+
+    nginx: 
+      build:
+        context: ./nginx
+        dockerfile: Dockerfile
+      ports:
+      - "80:80"
+      volumes:
+        - ./www:/usr/share/nginx/html
+      restart: always
+      depends_on:
+        - wordpress1
+        - wordpress2
+        - wordpress3
