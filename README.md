@@ -1,27 +1,26 @@
 
-# Wordpress em uma Arquitetura Escalável
-O projeto consiste em provisionar múltiplas instâncias do Wordpress,
-de modo a aumentar sua escalabilidade e disponibilidade. Para isso, é utilizado o 
-Nginx como balanceador de carga para as múltiplas instâncias do Wordpress.
+# WordPress in a Scalable Architecture
+The project consists of provisioning multiple instances of WordPress in order to increase its scalability and availability. 
+For this purpose, Nginx is used as a load balancer for the multiple WordPress instances.
 
-## Instalação
+## Instalation
 
-**1 -**  Clone o repositório :
+**1 -**  Clone the repository:
 
     git clone https://github.com/vitorlima-dev/wordpress-lb.git
 
-**2 -** Digite o comando abaixo para inicializar os serviços :
+**2 -** Run the following command to start the services:
     
     docker-compose up
     
-**3 -** Acesse o wordpress em [http://localhost](http:localhost:80)
+**3 -** Access WordPress at [http://localhost](http:localhost:80)
 
-**4 -** Após iniciar os cinco contêineres, execute algumas vezes o comando 
+**4 -** After starting the five containers, run the following command a few times:
     
     curl -I http://<ip-do-host>/  
 
-Veja que o cabeçalho HTTP X-Upstream irá assumir três possíveis endereços de IP, que são os IPs dos contêineres do Wordpress. 
-Os mesmo endereços podem ser verificados via navegador, inspecionando a página, na aba Rede.
+You will see that the X-Upstream HTTP header will display three possible IP addresses, which are the IPs of the WordPress containers.
+These same addresses can also be verified in the browser by inspecting the page under the Network tab.
 
 ### A aquiterura que acabamos de provisionar fica assim !!
 
