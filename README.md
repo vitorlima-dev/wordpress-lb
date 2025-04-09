@@ -22,7 +22,7 @@ For this purpose, Nginx is used as a load balancer for the multiple WordPress in
 You will see that the X-Upstream HTTP header will display three possible IP addresses, which are the IPs of the WordPress containers.
 These same addresses can also be verified in the browser by inspecting the page under the Network tab.
 
-### A aquiterura que acabamos de provisionar fica assim !!
+### The architecture we have just provisioned looks like this!!
 
 ![Projeto Wordpress](https://github.com/vitorlima-dev/wordpress-lb/assets/131411785/eb4df95d-0aee-4a49-9e89-5ed08e4c23e3)
 
